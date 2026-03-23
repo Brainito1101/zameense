@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layouts/Navbar";
 import Footer from "./components/layouts/Footer";
 import Home from "./pages/Home";
-import BuyLand from "./pages/Buyland";
+import BuyLand from "./pages/BuyLand";
 // import LandDetails from "./pages/LandDetails";
 import HeroSection from "./sections/HeroSection";
 import Contact from "./sections/Contact"; 
