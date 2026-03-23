@@ -24,7 +24,7 @@ function App() {
       {/* ONLY ROUTES */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Buy-land" element={<BuyLand />} />
+        <Route path="/Buy-Land" element={<BuyLand />} />
         {/* <Route path="/land/:id" element={<LandDetails />} /> */}
         <Route path="/land/:id" element={<FeaturedListings />} />
         <Route path="/sell-land" element={<SellLand />} />
