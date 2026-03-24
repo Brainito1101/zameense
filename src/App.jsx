@@ -9,7 +9,7 @@ import FeaturedListings from "./sections/FeaturedListings";
 import SellLand from "./pages/SellLand";
 import Referral from "./pages/Referral";
 import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
+import Logiin from "./pages/Logiin";
 
 import Register from "./pages/Register";
 
@@ -30,7 +30,7 @@ function App() {
         <Route path="/Sell-Land" element={<SellLand />} />
         <Route path="/Referral" element={<Referral />} />
         <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/Logiin" element={<Logiin />} />
         <Route path="/Register" element={<Register />} />
       </Routes>
 
