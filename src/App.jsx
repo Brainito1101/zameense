@@ -30,8 +30,8 @@ function App() {
         <Route path="/sell-Land" element={<SellLand />} />
         <Route path="/referral" element={<Referral />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
       </Routes>
 
       {/* GLOBAL */}
