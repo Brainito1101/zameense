@@ -15,7 +15,7 @@ const Login = () => {
     console.log("Login:", form);
 
     // 👉 later API call
-    navigate("/dashboard");
+    navigate("/Dashboard");
   };
 
   return (
@@ -50,7 +50,7 @@ const Login = () => {
         <p className="text-sm text-center">
           Don’t have account?
           <span
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/Register")}
             className="text-[#FF9933] cursor-pointer"
           >
             Register
