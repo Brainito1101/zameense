@@ -26,8 +26,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Buy-Land" element={<BuyLand />} />
         {/* <Route path="/land/:id" element={<LandDetails />} /> */}
-        <Route path="/land/:id" element={<FeaturedListings />} />
-        <Route path="/sell-land" element={<SellLand />} />
+        <Route path="/Land/:id" element={<FeaturedListings />} />
+        <Route path="/sell-Land" element={<SellLand />} />
         <Route path="/referral" element={<Referral />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
