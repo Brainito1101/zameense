@@ -25,7 +25,7 @@ export default function HeroSection({ onSearch }) {
         className="w-full h-full bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80')"
+            "url('https://res.cloudinary.com/dxtkygjlk/image/upload/v1774347146/noah-ridge-6RPecz_0OEc-unsplash_gjkgxd.jpg')"
         }}
       >
 
