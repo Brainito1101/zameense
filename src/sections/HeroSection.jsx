@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+
 export default function HeroSection({ onSearch }) {
+  const [activeField, setActiveField] = useState(null);
   const [filters, setFilters] = useState({
     location: "",
     land_type: "",
@@ -58,26 +60,54 @@ export default function HeroSection({ onSearch }) {
               className="mt-10 flex justify-center"
             >
 
-              <div className="bg-white/90 backdrop-blur-md shadow-2xl rounded-full p-2 flex flex-col md:flex-row items-center gap-2 w-full max-w-5xl">
+              <div onMouseLeave={() => setActiveField(null)}  className="
+  bg-white/95 backdrop-blur-md shadow-2xl 
+  rounded-3xl md:rounded-full 
+  p-4 md:p-2 
+  flex flex-col md:flex-row 
+  items-stretch md:items-center 
+  gap-3 md:gap-2 
+  w-full max-w-md md:max-w-5xl
+">
 
                 {/* Location */}
                 <input
-                  type="text"
-                  name="location"
-                  placeholder="📍 Enter city or district"
-                  onChange={handleChange}
-                  className="flex-1 px-4 py-2 text-black text-sm outline-none rounded-full"
-                />
+  type="text"
+  name="location"
+  placeholder="📍 Enter city or district"
+  onChange={handleChange}
+  onFocus={() => setActiveField("location")}
+  onBlur={() => setActiveField(null)}
+  onMouseEnter={() => setActiveField("location")}
+  className={`
+    w-full md:flex-1 px-4 py-3 md:py-2 text-black text-sm outline-none 
+    rounded-xl md:rounded-full transition-all duration-300
 
+    ${activeField === "location"
+      ? "ring-2 ring-[#FF9933] bg-white"
+      : "md:shadow-sm md:bg-transparent bg-gray-200"}
+  `}
+/>
                 {/* Divider */}
                 <div className="hidden md:block w-px h-6 bg-gray-300"></div>
 
                 {/* Land Type */}
-                <select
-                  name="land_type"
-                  onChange={handleChange}
-                  className="px-3 py-2 text-black text-sm bg-transparent outline-none cursor-pointer rounded-full"
-                >
+ <select
+  name="land_type"
+  onChange={handleChange}
+  onFocus={() => setActiveField("land_type")}
+  onBlur={() => setActiveField(null)}
+  onMouseEnter={() => setActiveField("land_type")}
+  className={`
+    w-full md:w-auto px-4 py-3 md:py-2 text-black text-sm 
+    outline-none cursor-pointer rounded-xl md:rounded-full 
+    transition-all duration-300
+
+    ${activeField === "land_type"
+      ? "ring-2 ring-[#FF9933] bg-white"
+      : "md:shadow-sm md:bg-transparent bg-gray-300"}
+  `}
+>
                   <option value="">Land Type</option>
                   <option value="agricultural">Agricultural</option>
                   <option value="residential">Residential</option>
@@ -89,10 +119,21 @@ export default function HeroSection({ onSearch }) {
 
                 {/* Price */}
                 <select
-                  name="price"
-                  onChange={handleChange}
-                  className="px-3 py-2 text-black text-sm bg-transparent outline-none cursor-pointer rounded-full"
-                >
+  name="price"
+  onChange={handleChange}
+  onFocus={() => setActiveField("price")}
+  onBlur={() => setActiveField(null)}
+  onMouseEnter={() => setActiveField("price")}
+  className={`
+    w-full md:w-auto px-4 py-3 md:py-2 text-black text-sm 
+    outline-none cursor-pointer rounded-xl md:rounded-full 
+    transition-all duration-300
+
+    ${activeField === "price"
+      ? "ring-2 ring-[#FF9933] bg-white"
+      : "md:shadow-sm md:bg-transparent bg-gray-300"}
+  `}
+>
                   <option value="">Price</option>
                   <option value="0-500000">Below 5L</option>
                   <option value="500000-1000000">5L - 10L</option>
@@ -101,11 +142,19 @@ export default function HeroSection({ onSearch }) {
 
                 {/* Search Button */}
                 <button
-                  onClick={handleSearch}
-                  className="bg-[#FF9933] hover:bg-[#E67300] text-white px-6 py-2 rounded-full font-semibold shadow-md transition transform hover:scale-105"
-                >
-                  Search
-                </button>
+  onClick={handleSearch}
+  className="
+    w-full md:w-auto 
+    bg-[#FF9933] hover:bg-[#E67300] 
+    text-white 
+    px-6 py-3 md:py-2 
+    rounded-xl md:rounded-full 
+    font-semibold shadow-md 
+    transition transform hover:scale-105
+  "
+>
+  Search
+</button>
 
               </div>
             </motion.div>
