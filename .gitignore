@@ -7,10 +7,21 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Python
+__pycache__/
+*.py[cod]
+*.env
+*.sqlite3
+*.db
+venv/
+.venv/
+backend/venv/
+backend/.venv/
+backend/myproject/db.sqlite3
+
+# Django
+staticfiles/
+media/
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +33,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# VS Code
+.vscode/
+
+# Node
+node_modules
+node_modules/
+dist
+dist-ssr
+dist/
+*.local
+
+# OS
+.DS_Store
+Thumbs.db
