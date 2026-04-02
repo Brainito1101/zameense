@@ -46,24 +46,6 @@ const Home = () => {
         <FeaturedListings lands={lands} loading={loading} />
       )}
 
-      {/* Referral Section */}
-      <section className="bg-orange-50 py-16 text-center">
-        <h2 className="text-3xl font-bold mb-4">
-          Earn Money by Referring Friends 🎉
-        </h2>
-
-        <p className="text-gray-600 mb-6">
-          Share your referral link and earn rewards when users list land.
-        </p>
-
-        <button
-          onClick={() => navigate("/referral")}
-          className="bg-[#FF9933] hover:bg-[#E67300] text-white px-6 py-3 rounded-lg"
-        >
-          Refer Now
-        </button>
-      </section>
-
       <FAQSection />
       <Contact />
 
