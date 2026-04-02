@@ -4,7 +4,6 @@ import Footer from "./components/layouts/Footer";
 import Home from "./pages/Home";
 import BuyLand from "./pages/buyland";
 import SellLand from "./pages/sellland";
-import Referral from "./pages/Referral";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -34,7 +33,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/buy-land" element={<BuyLand />} />
         <Route path="/sell-land" element={<SellLand />} />
-        <Route path="/Referral" element={<Referral />} />
         <Route path="/land/:id" element={<LandDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/how-it-works" element={<HowItWorks />} />

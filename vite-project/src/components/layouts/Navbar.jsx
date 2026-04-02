@@ -55,19 +55,12 @@ export default function Navbar() {
             {/* DESKTOP BUTTONS */}
             <div className="hidden md:flex items-center gap-4">
 
-              {token ? (
+              {token && (
   <button
     onClick={handleLogout}
     className="border border-red-500 text-red-500 px-4 py-2 rounded-lg font-medium"
   >
     Logout
-  </button>
-) : (
-  <button
-    onClick={() => navigate("/login")}
-    className="border border-[#FF9933] text-[#FF9933] px-4 py-2 rounded-lg font-medium hover:bg-orange-50 transition"
-  >
-    Login
   </button>
 )}
 
@@ -134,7 +127,7 @@ export default function Navbar() {
           <div className="border-t pt-6 flex flex-col gap-4">
 
             {/* LOGIN */}
-            {token ? (
+            {token && (
   <button
     onClick={() => {
       handleLogout();
@@ -143,16 +136,6 @@ export default function Navbar() {
     className="w-full border border-red-500 text-red-500 py-2 rounded-lg font-medium"
   >
     Logout
-  </button>
-) : (
-  <button
-    onClick={() => {
-      navigate("/login");
-      setOpen(false);
-    }}
-    className="w-full border border-[#FF9933] text-[#FF9933] py-2 rounded-lg font-medium"
-  >
-    Login
   </button>
 )}
 

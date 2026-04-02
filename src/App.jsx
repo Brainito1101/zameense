@@ -22,6 +22,7 @@ function App() {
       <Navbar />
 
       {/* ONLY ROUTES */}
+      <div className="pt-20">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Buy-Land" element={<BuyLand />} />
@@ -33,7 +34,7 @@ function App() {
         <Route path="/Logiin" element={<Logiin />} />
         <Route path="/Register" element={<Register />} />
       </Routes>
-
+      </div>
       {/* GLOBAL */}
       <Footer />
 

@@ -1,3 +1,4 @@
+
 import logo from "../../assets/images/logo.png";
 import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -10,6 +11,7 @@ const menuItems = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
 
   // 🔥 Lock background scroll when menu opens
@@ -17,20 +19,46 @@ export default function Navbar() {
     document.body.style.overflow = open ? "hidden" : "auto";
   }, [open]);
 
+  // 🔥 Detect scroll
+ useEffect(() => {
+  const handleScroll = () => {
+    console.log("scrollY:", window.scrollY); // 👈 ADD THIS
+    setScrolled(window.scrollY > 50);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
   return (
     <>
       {/* NAVBAR */}
-      <nav className="bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200 sticky top-0 z-50">
-
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/90 backdrop-blur-md shadow-md border-b border-gray-200 py-2"
+            : "bg-transparent py-4"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300">
 
           {/* LOGO */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Zameense" className="h-6" />
+            <img
+              src={logo}
+              alt="Zameense"
+              className={`transition-all duration-300 ${
+                scrolled ? "h-5" : "h-7"
+              }`}
+            />
           </Link>
 
           {/* DESKTOP MENU */}
-          <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
+          <ul
+            className={`hidden md:flex gap-8 font-medium transition-all duration-300 ${
+              scrolled ? "text-gray-700" : "text-white"
+            }`}
+          >
             {menuItems.map((item, index) => (
               <li key={index} className="relative group">
                 <Link
@@ -52,14 +80,22 @@ export default function Navbar() {
 
               <button
                 onClick={() => navigate("/login")}
-                className="border border-[#FF9933] text-[#FF9933] px-4 py-2 rounded-lg font-medium hover:bg-orange-50 transition"
+                className={`px-4 py-2 rounded-lg font-medium transition ${
+                  scrolled
+                    ? "border border-[#FF9933] text-[#FF9933] hover:bg-orange-50"
+                    : "bg-white text-[#FF9933]"
+                }`}
               >
                 Login
               </button>
 
               <button
                 onClick={() => navigate("/sell-land")}
-                className="bg-[#FF9933] hover:bg-[#E67300] text-white px-5 py-2 rounded-lg font-medium shadow hover:scale-105 transition"
+                className={`px-5 py-2 rounded-lg font-medium shadow transition ${
+                  scrolled
+                    ? "bg-[#FF9933] text-white hover:bg-[#E67300]"
+                    : "bg-[#FF9933] text-white"
+                }`}
               >
                 Sell Land
               </button>
@@ -142,7 +178,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      
     </>
   );
 }
+```
