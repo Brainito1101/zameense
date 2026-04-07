@@ -1,62 +1,75 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import HeroSection from "../sections/HeroSection";
-import FeaturedListings from "../sections/FeaturedListings";
 import FAQSection from "../sections/FAQSection";
 import Contact from "../sections/Contact";
-
-
-
+import MapView from "../components/MapView";
 
 const Home = () => {
   const [lands, setLands] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/lands/")
+    axios
+      .get("https://zameense123.pythonanywhere.com/api/lands/")
       .then((res) => {
         console.log("DATA:", res.data);
-        setLands(res.data);
-        setLoading(false);
+        setLands([
+  {
+    id: 1,
+    price: 500000,
+    location: "Ahmedabad",
+    property_type: "Plot",
+    images: [{ image: "https://via.placeholder.com/300" }]
+  }
+]);
       })
       .catch((err) => {
         console.error(err);
-        setLoading(false);
       });
   }, []);
 
   return (
     <>
-      {/* Hero Section */}
+      {/* 🔥 Hero */}
       <HeroSection />
 
-      {/* Listings */}
-      <FeaturedListings lands={lands} />
-        {/* ✅ REFERRAL SECTION */}
-      <section className="bg-orange-50 py-16 text-center">
+      {/* 🔥 MAP + LIST SECTION */}
+      <div className="h-screen">
+        <div className="flex h-full">
 
-        <h2 className="text-3xl font-bold mb-4">
-          Earn Money by Referring Friends 🎉
-        </h2>
+          {/* ✅ LEFT MAP */}
+          <div className="w-1/2 h-full border-4 border-red-500">
+            <MapView />
+          </div>
 
-        <p className="text-gray-600 mb-6">
-          Share your referral link and earn rewards when users list land.
-        </p>
+          {/* ✅ RIGHT LIST */}
+          <div className="w-1/2 h-full overflow-y-scroll p-4 bg-gray-100">
+            {lands.map((land) => (
+              <div
+                key={land.id}
+                className="bg-white p-3 mb-4 rounded-lg shadow"
+              >
+                <img
+                  src={land.images?.[0]?.image}
+                  alt="land"
+                  className="h-40 w-full object-cover rounded"
+                />
 
-        <button
-          onClick={() => navigate("/referral")}
-          className="bg-[#FF9933] hover:bg-[#E67300] text-white px-6 py-3 rounded-lg"
-        >
-          Refer Now
-        </button>
+                <h2 className="font-bold text-lg mt-2">
+                  ₹ {land.price}
+                </h2>
 
-      </section>
+                <p className="text-gray-600">{land.location}</p>
+                <p className="text-sm">{land.property_type}</p>
+              </div>
+            ))}
+          </div>
 
-      {/* Other Sections */}
-      
+        </div>
+      </div>
+
+      {/* 🔥 Other Sections */}
       <FAQSection />
       <Contact />
     </>

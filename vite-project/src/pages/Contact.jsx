@@ -78,13 +78,9 @@ export default function Contact() {
               className="w-full bg-green-700 text-white py-3 rounded-lg hover:bg-green-800 transition"
             >
               Send Message
-              <div className="text-center mt-6 space-y-2">
-
- 
-
-  <p>✉ support@zameense.com</p>
-
-</div>
+              <p className="text-center mt-4 text-gray-500">
+  We respond within 24 hours ⏱
+</p>
             </button>
             
 

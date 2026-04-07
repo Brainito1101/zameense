@@ -161,7 +161,7 @@ export default function HeroSection({ onSearch }) {
 
             {/* Trust Line */}
             <p className="mt-4 text-gray-300 text-sm">
-              ✔ 1000+ Verified Lands | ✔ Trusted by 500+ Buyers
+              ✔ 1000+ Verified Lands  ✔ Trusted by 500+ Buyers
             </p>
 
           </div>

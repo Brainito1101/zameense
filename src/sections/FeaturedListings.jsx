@@ -76,15 +76,12 @@ const FeaturedListings = ({ lands = [], loading = false }) => {
       className="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 h-full flex flex-col"
     >
 
-      {/* IMAGE */}
-      <div className="overflow-hidden relative">
-        <img
-          src={item.image}
-          alt={item.title}
-          loading="lazy"
-          className="w-full h-56 object-cover transform hover:scale-110 transition duration-500"
-        />
-
+      <img
+  src={item.image ? item.image : "/no-image.png"}
+  alt={item.title}
+  loading="lazy"
+  className="w-full h-56 object-cover transform hover:scale-110 transition duration-500"
+/>
         {/* VERIFIED BADGE */}
         <span className="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded">
           Verified

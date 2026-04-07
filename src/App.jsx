@@ -5,13 +5,12 @@ import Home from "./pages/Home";
 import BuyLand from "./pages/BuyLand";
 import HeroSection from "./sections/HeroSection";
 import Contact from "./sections/Contact"; 
-import FeaturedListings from "./sections/FeaturedListings";
+// import FeaturedListings from "./sections/FeaturedListings";
 import SellLand from "./pages/SellLand";
 import Referral from "./pages/Referral";
 import Dashboard from "./pages/Dashboard";
-import Logiin from "./pages/Logiin";
+import "leaflet/dist/leaflet.css";
 
-import Register from "./pages/Register";
 
 
 function App() {
@@ -27,12 +26,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Buy-Land" element={<BuyLand />} />
         {/* <Route path="/land/:id" element={<LandDetails />} /> */}
-        <Route path="/Land/:id" element={<FeaturedListings />} />
+        {/* <Route path="/Land/:id" element={<FeaturedListings />} /> */}
         <Route path="/Sell-Land" element={<SellLand />} />
         <Route path="/Referral" element={<Referral />} />
         <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/Logiin" element={<Logiin />} />
-        <Route path="/Register" element={<Register />} />
+      
       </Routes>
       </div>
       {/* GLOBAL */}
