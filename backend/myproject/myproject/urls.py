@@ -12,7 +12,7 @@ urlpatterns = [
 # serve media files
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# 🔥 THIS IS THE IMPORTANT PART (frontend)
+# serve frontend (React)
 urlpatterns += [
     re_path(r'^.*$', frontend),
 ]
