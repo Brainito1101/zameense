@@ -12,6 +12,10 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import EmailTokenObtainPairSerializer
+from django.shortcuts import render
+
+def frontend(request):
+    return render(request, "index.html")
 
 
 @api_view(['POST'])
