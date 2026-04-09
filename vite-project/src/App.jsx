@@ -3,7 +3,7 @@ import Navbar from "./components/layouts/Navbar";
 import Footer from "./components/layouts/Footer";
 import Home from "./pages/Home";
 import BuyLand from "./pages/BuyLand";
-import SellLand from "./pages/sellland";
+import SellLand from "./pages/SellLand";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import LandDetail from "./pages/LandDetail";
