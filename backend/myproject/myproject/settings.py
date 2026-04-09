@@ -13,7 +13,7 @@ REST_FRAMEWORK = {
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-FRONTEND_DIR = BASE_DIR.parent / "frontend" / "dist"
+FRONTEND_DIR = BASE_DIR.parent / "vite-project" / "dist"
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -124,7 +124,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    FRONTEND_DIR / "assets",  # ✅ FIXED
+    FRONTEND_DIR / "assets",
 ]
 
 
