@@ -2,11 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/layouts/Navbar";
 import Footer from "./components/layouts/Footer";
 import Home from "./pages/Home";
-import BuyLand from "./pages/buyland";
+import BuyLand from "./pages/BuyLand";
 import SellLand from "./pages/sellland";
 import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import LandDetail from "./pages/LandDetail";
 import About from "./pages/About";
@@ -53,9 +51,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
       </Routes>
 
       {/* GLOBAL */}

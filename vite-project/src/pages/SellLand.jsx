@@ -66,65 +66,42 @@ const SellLand = () => {
   };
 
   // 🚀 SUBMIT
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (formData.website) return;
+  if (formData.website) return;
 
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
+  const validationErrors = validate();
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    return;
+  }
 
-    const token = localStorage.getItem("token");
-    console.log("TOKEN:", token);
+  const form = new FormData();
 
-    if (!token) {
-      alert("Please login first ❌");
-      navigate("/login");
-      return;
-    }
+  form.append("title", formData.full_name);
+  form.append("location", formData.location);
+  form.append("property_type", formData.land_type.toLowerCase());
+  form.append("price", Math.floor(formData.price));
+  form.append("area", formData.size);
+  form.append("description", formData.description);
 
-    let userId = null;
-    try {
-      const tokenParts = token.split('.');
-      if (tokenParts.length === 3) {
-        const payload = JSON.parse(atob(tokenParts[1]));
-        userId = payload.user_id || payload.sub;
-      }
-    } catch (err) {
-      console.log("Could not decode token:", err);
-    }
+  if (formData.image) {
+    form.append("images", formData.image);
+  }
 
-    const form = new FormData();
-
-    form.append("title", formData.full_name);
-    form.append("location", formData.location);
-    form.append("property_type", formData.land_type.toLowerCase());
-    form.append("price", Math.floor(formData.price));
-    form.append("area", formData.size);
-    form.append("description", formData.description);
-    if (userId) {
-      form.append("user", userId);
-    }
-    if (formData.image) {
-      form.append("images", formData.image);
-    }
-
-    try {
-      await API.post("lands/", form);
-      setSubmitted(true);
-
-    } catch (error) {
-      console.log("Error:", error.response?.data);
-      alert(
-        error.response?.data?.detail ||
-        JSON.stringify(error.response?.data) ||
-        "Error submitting land ❌"
-      );
-    }
-  };
+  try {
+    await API.post("lands/", form); // ✅ no auth needed
+    setSubmitted(true);
+  } catch (error) {
+    console.log("Error:", error.response?.data);
+    alert(
+      error.response?.data?.detail ||
+      JSON.stringify(error.response?.data) ||
+      "Error submitting land ❌"
+    );
+  }
+};
 
   // 🎉 SUCCESS MESSAGE
   if (submitted) {
