@@ -12,10 +12,10 @@ REST_FRAMEWORK = {
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# parent = backend/myproject/myproject → parent = backend/myproject
+# parent.parent = backend/myproject
 
 FRONTEND_DIR = BASE_DIR.parent.parent / "vite-project" / "dist"
-
+# backend/myproject → backend → zameense(root) / vite-project / dist
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
