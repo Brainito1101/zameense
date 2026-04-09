@@ -12,8 +12,7 @@ REST_FRAMEWORK = {
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-FRONTEND_DIR = BASE_DIR.parent.parent / "vite-project" / "dist"
+FRONTEND_DIR = BASE_DIR.parent / "vite-project" / "dist"
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -123,10 +123,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Where collectstatic collects everything TO
+STATIC_ROOT = BASE_DIR / "static_collected"
 
+# Where Django looks for extra static files (your React assets)
+STATICFILES_DIRS = [
+    FRONTEND_DIR / "assets",
+]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+# WhiteNoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
