@@ -7,10 +7,10 @@ npm run build
 cd ..
 
 echo "=== Setting up Django Backend ==="
-cd backend
+cd backend/myproject
 pip install -r requirements.txt
 python manage.py collectstatic --noinput
 python manage.py migrate
-cd ..
+cd ../..
 
 echo "=== Build Complete ==="
