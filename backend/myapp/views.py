@@ -12,10 +12,12 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import EmailTokenObtainPairSerializer
-from django.shortcuts import render
+from django.http import JsonResponse
 
-def frontend(request):
-    return render(request, "index.html")
+def home(request):
+    return JsonResponse({
+        "status": "API is running 🚀"
+    })
 
 
 @api_view(['POST'])
