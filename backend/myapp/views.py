@@ -12,7 +12,17 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import EmailTokenObtainPairSerializer
+from django.shortcuts import render
+import os
 from django.http import JsonResponse
+
+def frontend(request):
+    path = os.path.join(os.getcwd(), 'vite-project', 'dist', 'index.html')
+    return JsonResponse({
+        "exists": os.path.exists(path),
+        "path": path
+    })
+
 
 def home(request):
     return JsonResponse({
