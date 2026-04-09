@@ -13,15 +13,12 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import EmailTokenObtainPairSerializer
 from django.shortcuts import render
-import os
 from django.http import JsonResponse
 
+from django.shortcuts import render
+
 def frontend(request):
-    path = os.path.join(os.getcwd(), 'vite-project', 'dist', 'index.html')
-    return JsonResponse({
-        "exists": os.path.exists(path),
-        "path": path
-    })
+    return render(request, "index.html")
 
 
 def home(request):
