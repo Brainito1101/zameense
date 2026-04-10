@@ -11,9 +11,7 @@ REST_FRAMEWORK = {
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-# = backend/myproject
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 FRONTEND_DIR = BASE_DIR.parent.parent / "vite-project" / "dist"
 AUTHENTICATION_BACKENDS = [
@@ -63,10 +61,11 @@ ROOT_URLCONF = 'myproject.myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],   
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -74,6 +73,7 @@ TEMPLATES = [
         },
     },
 ]
+
 WSGI_APPLICATION = 'myproject.myproject.wsgi.application'
 
 
