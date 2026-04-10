@@ -64,7 +64,7 @@ ROOT_URLCONF = 'myproject.myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [FRONTEND_DIR],   
+        'DIRS': [BASE_DIR / 'templates'],   
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,9 +75,7 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'myproject.wsgi.application' 
-
+WSGI_APPLICATION = 'myproject.myproject.wsgi.application'
 
 
 # Database
@@ -124,8 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [FRONTEND_DIR / "assets"]
-STATIC_ROOT = BASE_DIR / "static_collected"
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = []
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
