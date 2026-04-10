@@ -11,11 +11,47 @@ REST_FRAMEWORK = {
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from pathlib import Path
+import os
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-# parent.parent = backend/myproject
+# = backend/myproject
 
 FRONTEND_DIR = BASE_DIR.parent.parent / "vite-project" / "dist"
-# backend/myproject → backend → zameense(root) / vite-project / dist
+# backend/myproject → backend → root → vite-project/dist 
+
+ALLOWED_HOSTS = ['zameense.onrender.com', 'localhost', '127.0.0.1']
+
+INSTALLED_APPS = [
+    ...
+    'corsheaders',
+    'whitenoise.runserver_nostatic',
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ← 2nd position
+    'corsheaders.middleware.CorsMiddleware',
+    ...
+]
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [FRONTEND_DIR],  # ← serves React index.html
+        'APP_DIRS': True,
+        ...
+    },
+]
+
+ROOT_URLCONF = 'myproject.myproject.urls'
+WSGI_APPLICATION = 'myproject.myproject.wsgi.application'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [FRONTEND_DIR / "assets"]
+STATIC_ROOT = BASE_DIR / "static_collected"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
@@ -64,7 +100,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [FRONTEND_DIR],  # ✅ FIXED
+        'DIRS': [FRONTEND_DIR],  
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
