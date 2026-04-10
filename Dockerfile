@@ -8,7 +8,7 @@ COPY vite-project/ .
 RUN npm run build
 
 # Stage 2: Setup Django + serve frontend
-FROM python:3.9
+FROM python:3.10
 
 WORKDIR /app
 
