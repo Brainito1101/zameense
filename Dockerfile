@@ -31,4 +31,4 @@ COPY --from=frontend-builder /app/vite-project/dist/ ./backend/staticfiles/front
 EXPOSE 8000
 
 # Run Django server
-CMD cd backend/myproject && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
+CMD cd backend && gunicorn myproject.myproject.wsgi:application --bind 0.0.0.0:8000
