@@ -18,14 +18,14 @@ COPY backend/ ./backend/
 # Install Python dependencies
 RUN pip install --no-cache-dir -r backend/requirements.txt
 
-# Create staticfiles directory
-RUN mkdir -p backend/templates/frontend backend/staticfiles
+RUN mkdir -p backend/templates backend/staticfiles
 
-# Copy built frontend (dist folder) to Django
-COPY --from=frontend-builder /app/vite-project/dist/ ./backend/templates/frontend/
+# Copy built frontend directly to templates
+COPY --from=frontend-builder /app/vite-project/dist/index.html ./backend/templates/
+COPY --from=frontend-builder /app/vite-project/dist/assets ./backend/templates/assets
 
 # Also copy to static files
-COPY --from=frontend-builder /app/vite-project/dist/ ./backend/staticfiles/frontend/
+COPY --from=frontend-builder /app/vite-project/dist/ ./backend/staticfiles/
 
 # Expose port
 EXPOSE 8000
