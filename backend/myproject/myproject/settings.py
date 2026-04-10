@@ -11,47 +11,11 @@ REST_FRAMEWORK = {
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-from pathlib import Path
-import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 # = backend/myproject
 
 FRONTEND_DIR = BASE_DIR.parent.parent / "vite-project" / "dist"
-# backend/myproject → backend → root → vite-project/dist 
-
-ALLOWED_HOSTS = ['zameense.onrender.com', 'localhost', '127.0.0.1']
-
-INSTALLED_APPS = [
-    ...
-    'corsheaders',
-    'whitenoise.runserver_nostatic',
-]
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ← 2nd position
-    'corsheaders.middleware.CorsMiddleware',
-    ...
-]
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [FRONTEND_DIR],  # ← serves React index.html
-        'APP_DIRS': True,
-        ...
-    },
-]
-
-ROOT_URLCONF = 'myproject.myproject.urls'
-WSGI_APPLICATION = 'myproject.myproject.wsgi.application'
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [FRONTEND_DIR / "assets"]
-STATIC_ROOT = BASE_DIR / "static_collected"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
@@ -67,7 +31,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['zameense.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -95,12 +59,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'myproject.urls' 
+ROOT_URLCONF = 'myproject.myproject.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [FRONTEND_DIR],  
+        'DIRS': [FRONTEND_DIR],   
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -159,18 +123,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-
 STATIC_URL = '/static/'
-
-# Where collectstatic collects everything TO
+STATICFILES_DIRS = [FRONTEND_DIR / "assets"]
 STATIC_ROOT = BASE_DIR / "static_collected"
-
-# Where Django looks for extra static files (your React assets)
-STATICFILES_DIRS = [
-    FRONTEND_DIR / "assets",
-]
-
-# WhiteNoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
